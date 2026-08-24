@@ -18,10 +18,11 @@
     <main class="wrap">
       <header>
         <div><p class="eyebrow">PERSONAL FOCUS</p><h1>Focus</h1></div>
-        <div class="today" id="today"></div>
+        <div class="header-actions"><div class="today" id="today"></div><button class="settings-button" id="open-settings" aria-label="ポモドーロ設定を開く">⚙</button></div>
       </header>
 
       <section class="card timer-card">
+        <div class="timer-status"><span class="mode-badge" id="timer-mode">集中</span><span id="pomodoro-count">0 / 4 ポモドーロ</span></div>
         <div class="current" id="current-task">タスクを選んでください</div>
         <div class="timer" id="timer">25:00</div>
         <div class="chips" id="duration-chips"></div>
@@ -90,6 +91,40 @@
       </section>
       <footer>Focus · ChatGPTの契約に依存しないポータブル版</footer>
     </main>
+
+    <dialog class="settings-dialog" id="settings-dialog">
+      <div class="settings-sheet">
+        <div class="settings-title"><button id="close-settings" aria-label="設定を閉じる">‹</button><h2>ポモドーロ設定</h2><span></span></div>
+
+        <section class="settings-group">
+          <h3>時間とサイクル</h3>
+          <label class="setting-row"><span>ポモドーロの時間</span><select id="setting-focus-minutes"></select></label>
+          <label class="setting-row"><span>短い休憩</span><select id="setting-short-break"></select></label>
+          <label class="setting-row"><span>長い休憩</span><select id="setting-long-break"></select></label>
+          <label class="setting-row"><span>長い休憩の間隔</span><select id="setting-long-interval"></select></label>
+          <label class="setting-row switch-row"><span>次のポモドーロを自動開始</span><input id="setting-auto-focus" type="checkbox" /></label>
+          <label class="setting-row switch-row"><span>休憩を自動開始</span><input id="setting-auto-break" type="checkbox" /></label>
+          <label class="setting-row switch-row"><span>休憩をスキップ</span><input id="setting-skip-break" type="checkbox" /></label>
+        </section>
+
+        <section class="settings-group">
+          <h3>ポモドーロタイマーの音</h3>
+          <label class="setting-stack"><span>音量 <b id="volume-value">65%</b></span><input id="setting-volume" type="range" min="0" max="100" step="1" /></label>
+          <label class="setting-row"><span>ポモドーロの完了音</span><select id="setting-focus-sound"><option value="none">なし</option><option value="bell">ベル</option><option value="timer">タイマー</option><option value="soft">やさしい音</option></select></label>
+          <label class="setting-row"><span>休憩終了のアラーム</span><select id="setting-break-sound"><option value="none">なし</option><option value="timer">タイマー</option><option value="bell">ベル</option><option value="soft">やさしい音</option></select></label>
+          <label class="setting-row switch-row"><span><b>終了5分前の通知</b><small>ホーム画面版では許可が必要です</small></span><input id="setting-near-end" type="checkbox" /></label>
+          <label class="setting-row"><span>バイブレーション</span><select id="setting-vibration"><option value="0">なし</option><option value="1">1秒</option><option value="3">3秒</option></select></label>
+        </section>
+
+        <section class="settings-group">
+          <h3>ホワイトノイズ</h3>
+          <label class="setting-stack"><span>種類</span><select id="setting-white-noise"><option value="none">なし</option><option value="ticktock">チクタク</option><option value="seconds">秒読み</option><option value="cricket">こおろぎ</option><option value="classroom">教室</option><option value="mountain">山と野原</option><option value="stream">渓流</option><option value="beach">海岸</option><option value="rain">雨の日</option><option value="cafe">喫茶店</option><option value="fire">かがり火</option><option value="library">図書館</option><option value="wind">風</option><option value="frogs">夜のカエルの鳴き声</option></select></label>
+          <div class="noise-actions"><button id="preview-noise" type="button">試聴する</button><small>タイマー動作中は選んだ環境音が流れます</small></div>
+        </section>
+
+        <p class="ios-note">iPhoneでは、消音設定・画面ロック・Safariの仕様により、振動やバックグラウンド通知が動作しない場合があります。</p>
+      </div>
+    </dialog>
     <script src="./app.js" defer></script>
   </body>
 </html>
