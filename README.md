@@ -29,7 +29,7 @@ GitHub Pagesは `main` ブランチのルートから自動公開されます。
 
 このフォルダの中身を、Cloudflare Pages、GitHub Pages、Netlifyなどの静的ホスティングへそのまま配置できます。ビルド処理は不要です。
 
-GitHub Pages用の自動公開設定を `.github/workflows/pages.yml` に同梱しています。リポジトリのPages設定で「GitHub Actions」を選ぶと、`main` ブランチへ変更を保存するたびに新しい版が自動公開されます。
+現在のGitHub Pages設定は「Deploy from a branch／main／root」です。`main` ブランチへ変更を保存するたびに、新しい版が自動公開されます。`.github/workflows/pages.yml` は、将来GitHub Actions方式へ切り替える場合の予備設定です。
 
 ## 修正
 
