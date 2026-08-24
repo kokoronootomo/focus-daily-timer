@@ -1,4 +1,4 @@
-const CACHE = "focus-portable-v5";
+const CACHE = "focus-portable-v6";
 const CORE = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./favicon.svg", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {
