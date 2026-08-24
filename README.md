@@ -4,6 +4,8 @@ ChatGPT Sitesの契約や公開URLに依存せず、一般的な静的Webホス�
 
 公開URL: https://kokoronootomo.github.io/focus-daily-timer/
 
+GitHub Pagesは `main` ブランチのルートから自動公開されます。
+
 ## 主な機能
 
 - タスク追加・選択・削除
