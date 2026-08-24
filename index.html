@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#191918" />
+    <meta name="description" content="タスク、集中タイマー、日別カレンダーとObsidian記録" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Focus" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Focus — 集中記録</title>
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <div><p class="eyebrow">PERSONAL FOCUS</p><h1>Focus</h1></div>
+        <div class="today" id="today"></div>
+      </header>
+
+      <section class="card timer-card">
+        <div class="current" id="current-task">タスクを選んでください</div>
+        <div class="timer" id="timer">25:00</div>
+        <div class="chips" id="duration-chips"></div>
+        <div class="actions">
+          <button class="primary" id="start-button">集中開始</button>
+          <button class="secondary" id="complete-button">完了して記録</button>
+        </div>
+        <div class="sync"><span class="sync-dot"></span><span id="sync-text">完了するとObsidianへ記録します</span></div>
+        <a class="retry-link hidden" id="retry-obsidian" href="#">Obsidianへ記録を再送する</a>
+      </section>
+
+      <section class="card">
+        <div class="section-head"><h2>今日やること</h2><span class="badge" id="active-count">未完了 0件</span></div>
+        <div class="add">
+          <input id="task-input" placeholder="やることを入力" maxlength="80" autocomplete="off" />
+          <button class="addbtn" id="add-task" aria-label="タスクを追加">＋</button>
+        </div>
+        <div class="task-list" id="task-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head"><h2>タスク表</h2><span class="badge">追加順</span></div>
+        <div id="task-table"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head calendar-head">
+          <h2>毎日の実施記録</h2>
+          <div class="calendar-nav">
+            <button id="prev-month" aria-label="前の月">‹</button>
+            <strong id="month-label"></strong>
+            <button id="next-month" aria-label="次の月">›</button>
+          </div>
+        </div>
+        <div class="week"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+        <div class="calendar" id="calendar"></div>
+        <div class="details" id="day-details"></div>
+      </section>
+
+      <section class="stats">
+        <div class="stat"><span>今日の集中時間</span><strong id="today-minutes">0分</strong></div>
+        <div class="stat"><span>今日の完了タスク</span><strong id="today-tasks">0件</strong></div>
+      </section>
+
+      <section class="card connection-card">
+        <div class="section-head"><div><p class="eyebrow">CONNECTED</p><h2>Obsidian連携</h2></div><span class="connected">接続準備OK</span></div>
+        <p>Vault「<span id="vault-label">brain</span>」の <code>Focus/日付</code> に、タスク名と集中時間を追記します。</p>
+        <div class="vault-row"><label for="vault">Vault名</label><input id="vault" value="brain" /></div>
+        <a class="obsidian-button" id="open-obsidian" href="obsidian://open?vault=brain">Obsidianを開いて接続確認</a>
+      </section>
+
+      <section class="card transfer-card">
+        <div class="section-head"><div><p class="eyebrow">BACKUP &amp; MOVE</p><h2>データの書き出し・読み込み</h2></div></div>
+        <p id="transfer-text">端末変更・URL移行・定期バックアップに使えます。</p>
+        <div class="transfer-actions">
+          <button id="export-data">データを書き出す</button>
+          <button id="import-data">データを読み込む</button>
+        </div>
+        <input class="file-input" id="import-file" type="file" accept="application/json,.json" />
+        <p class="storage-note">記録はこの端末内に保存されます。別の端末へ移すときは書き出し・読み込みを使用してください。</p>
+      </section>
+
+      <section class="install-card">
+        <div class="install-icon">F</div>
+        <div><h2>iPhoneに追加</h2><p>Safariの共有ボタンから「ホーム画面に追加」を選ぶと、アプリのように使えます。</p></div>
+      </section>
+      <footer>Focus · ChatGPTの契約に依存しないポータブル版</footer>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
